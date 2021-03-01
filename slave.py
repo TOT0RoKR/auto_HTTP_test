@@ -15,5 +15,7 @@ while True:
 
         cm.data_send(master, data)
 
+        print('Send', data)
+
     master.close()
 
