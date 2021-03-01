@@ -33,10 +33,10 @@ def connect_to_slave(ip, port):
 def data_recv(socket, size):
     data = socket.recv(size)
 
-    return data
+    return data.decode()
 
 
 def data_send(socket, data):
     data = "{:<100}".format(data)
-    socket.sendall(data)
+    socket.sendall(data.encode())
 
