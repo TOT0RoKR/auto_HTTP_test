@@ -5,7 +5,7 @@ def open_slave(ip, port):
     PORT = port
     HOST = ip
 
-    socket = sk.socket(sk.AF_INET, sk.SOCK_STERAM)
+    socket = sk.socket(sk.AF_INET, sk.SOCK_STREAM)
 
     socket.setsockopt(sk.SOL_SOCKET, sk.SO_REUSEADDR, 1)
 
@@ -33,11 +33,10 @@ def connect_to_slave(ip, port):
 def data_recv(socket, size):
     data = socket.recv(size)
 
-    if not data:
-        return data, 0
+    return data
 
 
 def data_send(socket, data):
-    data = "{:<10}".format(data)
+    data = "{:<100}".format(data)
     socket.sendall(data)
 
