@@ -1,13 +1,14 @@
 if [ -z $1 ]; then
 	i=17
 fi
-cores=$(expr 50 + $1)
+queue=70
+cores=$(expr $queue + $1)
 
-echo "number:50~67 /proc/irq/[number]/smp_affinity exchange"
+echo "number:$queue~$(expr $queue + 17) /proc/irq/[number]/smp_affinity exchange"
 
 shif=1
-i=50
-while [ $i -le 67 ]; do
+i=$queue
+while [ $i -le $(expr $queue + 17) ]; do
 	path="/proc/irq/$i/smp_affinity"
 
 	echo "obase=16; $shif" | bc > $path
@@ -16,7 +17,7 @@ while [ $i -le 67 ]; do
 	cat $path | xargs echo "$i"
 
 	i=$(expr $i + 1)
-	temp=$(expr $i - 50)
+	temp=$(expr $i - $queue)
 	temp=$(expr $temp % $(expr 1 + $1))
 	if [ $temp -eq 0 ]; then
 		shif=1
