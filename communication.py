@@ -11,7 +11,7 @@ def open_slave(ip, port):
 
     socket.bind((HOST, PORT))
 
-    socket.listen()
+    socket.listen(5)
 
     return socket
 
