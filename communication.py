@@ -37,6 +37,8 @@ def data_recv(socket, size):
 
 
 def data_send(socket, data):
-    data = "{:<100}".format(data)
+    #  data = "{:<100}".format(data)
     socket.sendall(data.encode())
 
+#  def ready(slaves):
+    #  for slave in slaves:
