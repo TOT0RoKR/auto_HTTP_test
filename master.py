@@ -58,6 +58,10 @@ for slave in slaves:
     socket = cm.connect_to_slave(slave['ip'], port)
     slave['socket'] = socket
     slave['state'] = "online"
+    cm.data_send(socket, "asdasd")
+    print('send')
+    cm.data_recv(socket, 100)
+    print('recv')
 
 
 
