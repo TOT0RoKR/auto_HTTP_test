@@ -23,7 +23,7 @@ while True:
 
         if text[0] == "run":
             #  result_fd = open(RESULTFILE, mode="wt")
-            command = 'wrk_shell.sh {0} {1} {2} {3}'.format(path, duration, threads, connections)
+            command = './wrk_shell.sh {0} {1} {2} {3}'.format(path, duration, threads, connections)
             wrk = sp.Popen(command, stdout=sp.PIPE, stderr=sp.PIPE, shell=True)
             (out, err) = wrk.communicate()
             print('run')
